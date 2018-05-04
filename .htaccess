@@ -1,0 +1,16 @@
+RewriteEngine On
+    #aqui criamos uma condição para que os arquivos sejam ignorados nas regras abaixo
+    RewriteCond %{REQUEST_FILENAME} !-f
+    #aqui criamos uma condição para que diretórios sejam ignorados nas regras abaixo
+    RewriteCond %{REQUEST_FILENAME} !-d
+    #aqui definimos onde começa a base das regras
+    #vamos supor que fosse um subdiretório, como por exemplo: /vs1/
+    RewriteBase /
+    #aqui ignoramos o uso de barra no final
+    #RewriteRule ^(.*)\/?$ $1 [R,L]
+
+    #fix rules 
+	RewriteRule ^uploader$ g4g/php/uploaders.php  [QSA,L,NC]
+	RewriteRule ^uploaderOSM$ g4g/php/uploaderOSM.php  [QSA,L,NC]
+	RewriteRule ^converter/(.*)$ g4g/php/converter.php  [QSA,L,NC]
+
